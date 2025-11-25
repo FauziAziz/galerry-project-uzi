@@ -10,8 +10,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 require_once 'config/Database.php';
 require_once 'classes/Photo.php';
 
-$error = "";
-$success = "";
+ $error = "";
+ $success = "";
 
 // Proses upload foto
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -68,16 +68,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Foto - Gallery Foto</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Upload Foto - PixelVault</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .preview-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .preview-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body class="bg-light">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="home.php">
-                <i class="bi bi-images"></i> Gallery Foto
+                <i class="bi bi-camera"></i> PixelVault
             </a>
             <div class="ms-auto">
                 <a href="home.php" class="btn btn-light btn-sm">
@@ -148,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Preview gambar sebelum upload
         document.getElementById('imageInput').addEventListener('change', function(e) {
