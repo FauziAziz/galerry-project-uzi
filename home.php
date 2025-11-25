@@ -34,23 +34,6 @@ $photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css\style.css">
-    <style>
-        .photo-card {
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
-        .photo-card:hover {
-            transform: translateY(-5px);
-        }
-        .photo-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        .hashtag-badge {
-            font-size: 0.85rem;
-        }
-    </style>
 </head>
 <body class="bg-light">
     <!-- Navbar -->
