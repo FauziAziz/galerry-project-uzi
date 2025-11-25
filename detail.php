@@ -92,22 +92,6 @@ $like_count = $like_stmt->fetch(PDO::FETCH_ASSOC)['total'];
     <title><?= htmlspecialchars($photo_data['title']) ?> - Gallery Foto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <style>
-        .photo-detail {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .detail-image {
-            width: 100%;
-            border-radius: 8px;
-        }
-        .comment-box {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
 <body class="bg-light">
     <!-- Navbar -->
