@@ -10,16 +10,16 @@ require_once 'config/Database.php';
 require_once 'classes/Photo.php';
 require_once 'classes/Interaction.php';
 
-$database = new Database();
-$db = $database->getConnection();
+ $database = new Database();
+ $db = $database->getConnection();
 
-$photo = new Photo($db);
-$interaction = new Interaction($db);
+ $photo = new Photo($db);
+ $interaction = new Interaction($db);
 
 // Ambil detail foto
-$photo->id = isset($_GET['id']) ? $_GET['id'] : die('ID foto tidak ditemukan');
-$stmt = $photo->getById();
-$photo_data = $stmt->fetch(PDO::FETCH_ASSOC);
+ $photo->id = isset($_GET['id']) ? $_GET['id'] : die('ID foto tidak ditemukan');
+ $stmt = $photo->getById();
+ $photo_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$photo_data) {
     die('Foto tidak ditemukan');
@@ -69,36 +69,53 @@ if (isset($_POST['delete']) && $_SESSION['user_id'] == $photo_data['user_id'] &&
 }
 
 // Cek apakah user sudah like
-$interaction->photo_id = $photo->id;
-$interaction->user_id = $_SESSION['user_id'];
-$has_liked = $interaction->hasLiked();
+ $interaction->photo_id = $photo->id;
+ $interaction->user_id = $_SESSION['user_id'];
+ $has_liked = $interaction->hasLiked();
 
 // Ambil komentar
-$comments_stmt = $interaction->getCommentsByPhoto();
-$comments = $comments_stmt->fetchAll(PDO::FETCH_ASSOC);
+ $comments_stmt = $interaction->getCommentsByPhoto();
+ $comments = $comments_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Hitung total like
-$like_query = "SELECT COUNT(*) as total FROM interactions WHERE photo_id = :photo_id AND type = 'like'";
-$like_stmt = $db->prepare($like_query);
-$like_stmt->bindParam(":photo_id", $photo->id);
-$like_stmt->execute();
-$like_count = $like_stmt->fetch(PDO::FETCH_ASSOC)['total'];
+ $like_query = "SELECT COUNT(*) as total FROM interactions WHERE photo_id = :photo_id AND type = 'like'";
+ $like_stmt = $db->prepare($like_query);
+ $like_stmt->bindParam(":photo_id", $photo->id);
+ $like_stmt->execute();
+ $like_count = $like_stmt->fetch(PDO::FETCH_ASSOC)['total'];
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($photo_data['title']) ?> - Gallery Foto</title>
+    <title><?= htmlspecialchars($photo_data['title']) ?> - PixelVault</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .photo-detail {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .detail-image {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .comment-box {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body class="bg-light">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="home.php">
-                <i class="bi bi-images"></i> Gallery Foto
+                <i class="bi bi-camera"></i> PixelVault
             </a>
             <div class="ms-auto">
                 <a href="home.php" class="btn btn-light btn-sm">
