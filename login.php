@@ -26,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->rowCount() > 0) {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        // Verifikasi password
+        // veriv pass
         if (password_verify($password, $row['password'])) {
-            // Set session
+            // Set sesi
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['role'] = $row['role'];
@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Login - Gallery Foto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-light">
     <div class="container">
@@ -60,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="card-body p-5">
                         <div class="text-center mb-4">
                             <i class="bi bi-images text-primary" style="font-size: 3rem;"></i>
+                            <img src="assets/title.png">
                             <h2 class="mt-3">Gallery Foto</h2>
                             <p class="text-muted">Silakan login untuk melanjutkan</p>
                         </div>
@@ -92,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <hr class="my-4">
                         <div class="alert alert-info small mb-0">
-                            <strong>Info Testing:</strong><br>
-                            Admin - username: <code>admin</code> password: <code>password</code><br>
+                            <strong>Info Testing (DELETE KETIKA PUBLISH):</strong><br>
+                            atmin - username: <code>admin</code> password: <code>password</code><br>
                             User - username: <code>user1</code> password: <code>password</code>
                         </div>
                     </div>
@@ -101,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
         </div>
     </div>
-
+   >
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

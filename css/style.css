@@ -1,1 +1,150 @@
-.navbar-brand
+:root {
+
+  /* Primary Colors (ini warna utamanya, jan di ubah biar mirip pinterest */
+  --bs-primary: #D34E4E;
+  --bs-primary-rgb: 211, 78, 78;
+  --bs-primary-dark: #c92f2f;
+  --bs-primary-light: #ff8f8f;
+  
+  /* Secondary Colors (aneh) */
+  --bs-secondary: #DDC57A;
+  --bs-secondary-rgb: 221, 197, 122;
+  --bs-secondary-dark: #a18942;
+  --bs-secondary-light: #ffeeba;
+  
+  --bs-success: #28a745;
+  --bs-danger: #dc3545;
+  --bs-warning: #ffc107;
+  --bs-info: #17a2b8;
+  
+  --bs-accent: #6f42c1;
+  --bs-light: #f8f9fa;
+  --bs-dark: #343a40;
+  
+  /* font    */
+  --bs-font-sans-serif: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --bs-font-monospace: 'Fira Code', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.6;
+  --bs-heading-font-weight: 700;
+  
+  /* spacing */
+  --bs-spacer: 1rem;
+  --bs-border-radius: 0.375rem;
+  --bs-border-radius-sm: 0.25rem;
+  --bs-border-radius-lg: 0.5rem;
+  
+  --bs-navbar-height: 70px;
+  --bs-sidebar-width: 250px;
+  --bs-box-shadow: 0 0.10rem 2rem rgba(0, 0, 0, 0.15);
+  --bs-transition: all 0.3s ease;
+}
+
+/* var boostrap */
+/* Buttons */
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: var(--bs-primary-dark);
+  --bs-btn-hover-border-color: var(--bs-primary-dark);
+  --bs-btn-active-bg: var(--bs-primary-dark);
+}
+
+.btn-secondary {
+  --bs-btn-bg: var(--bs-secondary);
+  --bs-btn-border-color: var(--bs-secondary);
+}
+
+/* Navbar kastem */
+.navbar {
+  --bs-navbar-brand-font-size: 1.5rem;
+  --bs-navbar-brand-font-weight: 700;
+  min-height: var(--bs-navbar-height);
+  box-shadow: var(--bs-box-shadow);
+}
+
+.navbar-brand {
+  color: var(--bs-primary) !important;
+  font-size: var(--bs-navbar-brand-font-size);
+  font-weight: var(--bs-navbar-brand-font-weight);
+  transition: var(--bs-transition);
+}
+
+.navbar-brand:hover {
+  color: var(--bs-primary-dark) !important;
+  transform: translateY(-1px);
+}
+
+/* Cards (image) */
+.card {
+  --bs-card-border-radius: var(--bs-border-radius-lg);
+  --bs-card-box-shadow: var(--bs-box-shadow);
+  border-radius: var(--bs-card-border-radius);
+  box-shadow: var(--bs-card-box-shadow);
+  transition: var(--bs-transition);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+/* Forms (uploas) */
+.form-control {
+  --bs-border-radius: var(--bs-border-radius);
+  border-radius: var(--bs-border-radius);
+  transition: var(--bs-transition);
+}
+
+.form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
+}
+
+/* Alerts (error) */
+.alert-primary {
+  --bs-alert-bg: rgba(var(--bs-primary-rgb), 0.1);
+  --bs-alert-border-color: rgba(var(--bs-primary-rgb), 0.3);
+  --bs-alert-color: var(--bs-primary-dark);
+}
+
+/* badegs */
+.badge {
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 600;
+  --bs-badge-border-radius: var(--bs-border-radius-sm);
+}
+
+/* kelas kink */
+.text-accent {
+  color: var(--bs-accent) !important;
+}
+
+.bg-accent {
+  background-color: var(--bs-accent) !important;
+}
+
+.border-accent {
+  border-color: var(--bs-accent) !important;
+}
+
+/* resfonsif (support mobile & dll dll */
+@media (max-width: 768px) {
+  :root {
+    --bs-body-font-size: 0.9rem;
+    --bs-navbar-height: 60px;
+  }
+  
+  .navbar-brand {
+    --bs-navbar-brand-font-size: 1.25rem;
+  }
+}
+
+/* =mode hytam */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-light: #212529;
+    --bs-dark: #f8f9fa;
+  }
+}

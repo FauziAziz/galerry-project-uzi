@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS gallery_foto;
 USE gallery_foto;
 
--- Tabel 1: users (untuk login admin dan user)
+-- Tabel 1: users
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabel 2: photos (untuk menyimpan foto yang diupload admin)
+-- Tabel 2: photos
 CREATE TABLE photos (
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE photos (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabel 3: interactions (untuk menyimpan like dan komentar user)
+-- Tabel 3: interactions 
 CREATE TABLE interactions (
     id INT PRIMARY KEY AUTO_INCREMENT,
     photo_id INT NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE interactions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Relasi menggunakan ALTER TABLE (sesuai requirement)
+-- Relasi menggunakan ALTER TABLE
 ALTER TABLE photos 
 ADD CONSTRAINT fk_photo_user 
 FOREIGN KEY (user_id) REFERENCES users(id) 
@@ -53,4 +53,4 @@ ON DELETE CASCADE;
 INSERT INTO users (username, password, email, role) VALUES 
 ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@gallery.com', 'admin'),
 ('user1', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'user1@gallery.com', 'user');
--- Password untuk testing: password
+-- Password testing: password (jan di upload ke hosting)

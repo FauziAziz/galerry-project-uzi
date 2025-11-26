@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Jika sudah login, redirect ke home
+// Jika sudah login, redirect ke home.php
 if (isset($_SESSION['user_id'])) {
     header("Location: home.php");
     exit();
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user->password = $_POST['password'];
     $user->role = $_POST['role'];
     
-    // Cek apakah username sudah ada
+    // Cek username
     if ($user->usernameExists()) {
         $error = "Username sudah digunakan!";
     } else {
@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Register - Gallery Foto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="bg-light">
     <div class="container">
@@ -87,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <label class="form-label">Daftar Sebagai</label>
                                 <select name="role" class="form-select" required>
                                     <option value="user">User</option>
-                                    <option value="admin">Admin</option>
+                                    <option value="admin">Admin (BUAT TEST DOANG)</option>
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-success w-100 mb-3">
