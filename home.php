@@ -73,6 +73,9 @@ $photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <a class="nav-link" href="upload.php">
                                 <i class="bi bi-cloud-upload"></i> Upload Foto
                             </a>
+                            <a class="nav-link" href="dashboard.php">
+                                <i class="bi bi-menu-button-wide"></i>Dashboard
+                            </a>
                         </li>
                     <?php endif; ?>
                     <li class="nav-item dropdown">

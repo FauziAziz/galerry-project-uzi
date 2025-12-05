@@ -1,5 +1,6 @@
 <?php
-// Class untuk koneksi database
+// koneksi.php wkwk
+// Class 
 class Database {
     private $host = "localhost";
     private $db_name = "gallery_foto";
@@ -7,7 +8,7 @@ class Database {
     private $password = "";
     public $conn;
 
-    // Method untuk mendapatkan koneksi
+    // Method 
     public function getConnection() {
         $this->conn = null;
         

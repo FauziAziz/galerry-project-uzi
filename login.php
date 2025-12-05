@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <div class="text-center">
                             <small class="text-muted">
-                                Belum punya akun? <a href="register.php">Register di sini</a>
+                                Belum punya akun? <a href="register.php">Register sini</a>
                             </small>
                         </div>
 

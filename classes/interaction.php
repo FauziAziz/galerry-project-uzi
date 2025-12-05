@@ -1,5 +1,5 @@
 <?php
-// Class untuk mengelola like dan komentar
+// Class like sama komentar
 class Interaction {
     private $conn;
     private $table = "interactions";
@@ -14,7 +14,7 @@ class Interaction {
         $this->conn = $db;
     }
 
-    // Method untuk menambah like/komentar
+    // Method nya
     public function create() {
         $query = "INSERT INTO " . $this->table . " 
                   (photo_id, user_id, type, comment_text) 
@@ -30,7 +30,7 @@ class Interaction {
         return $stmt->execute();
     }
 
-    // Method untuk cek apakah user sudah like foto ini
+    // Method ccek sudah like apa blom
     public function hasLiked() {
         $query = "SELECT id FROM " . $this->table . " 
                   WHERE photo_id = :photo_id AND user_id = :user_id AND type = 'like'";
@@ -43,7 +43,7 @@ class Interaction {
         return $stmt->rowCount() > 0;
     }
 
-    // Method untuk unlike foto
+    // Method unlike
     public function unlike() {
         $query = "DELETE FROM " . $this->table . " 
                   WHERE photo_id = :photo_id AND user_id = :user_id AND type = 'like'";
@@ -55,7 +55,6 @@ class Interaction {
         return $stmt->execute();
     }
 
-    // Method untuk mendapatkan komentar berdasarkan foto
     public function getCommentsByPhoto() {
         $query = "SELECT i.*, u.username 
                   FROM " . $this->table . " i 

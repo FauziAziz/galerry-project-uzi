@@ -1,5 +1,5 @@
 <?php
-// Class untuk mengelola data foto
+
 class Photo {
     private $conn;
     private $table = "photos";
@@ -15,7 +15,7 @@ class Photo {
         $this->conn = $db;
     }
 
-    // Method untuk upload foto baru
+    // upload
     public function create() {
         $query = "INSERT INTO " . $this->table . " 
                   (user_id, title, description, hashtag, image_path) 
@@ -23,7 +23,7 @@ class Photo {
         
         $stmt = $this->conn->prepare($query);
         
-        $stmt->bindParam(":user_id", $this->user_id);
+        $stmt->bindParam (":user_id", $this->user_id);
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":description", $this->description);
         $stmt->bindParam(":hashtag", $this->hashtag);
@@ -31,8 +31,7 @@ class Photo {
         
         return $stmt->execute();
     }
-
-    // Method untuk mendapatkan semua foto (dengan filter hashtag opsional)
+    //
     public function getAll($hashtag = null) {
         $query = "SELECT p.*, u.username, 
                   (SELECT COUNT(*) FROM interactions WHERE photo_id = p.id AND type = 'like') as like_count,
@@ -40,12 +39,12 @@ class Photo {
                   FROM " . $this->table . " p 
                   LEFT JOIN users u ON p.user_id = u.id";
         
-        // Filter berdasarkan hashtag jika ada
+
         if ($hashtag) {
             $query .= " WHERE p.hashtag LIKE :hashtag";
         }
         
-        $query .= " ORDER BY p.created_at DESC";
+         $query .= " ORDER BY p.created_at DESC";
         
         $stmt = $this->conn->prepare($query);
         
@@ -58,7 +57,7 @@ class Photo {
         return $stmt;
     }
 
-    // Method untuk mendapatkan detail foto berdasarkan ID
+
     public function getById() {
         $query = "SELECT p.*, u.username 
                   FROM " . $this->table . " p 
@@ -72,10 +71,10 @@ class Photo {
         return $stmt;
     }
 
-    // Method untuk delete foto
+    // Method delete
     public function delete() {
         $query = "DELETE FROM " . $this->table . " WHERE id = :id";
-        $stmt = $this->conn->prepare($query);
+         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $this->id);
         
         return $stmt->execute();

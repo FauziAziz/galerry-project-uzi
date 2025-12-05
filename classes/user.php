@@ -1,5 +1,5 @@
 <?php
-// Class untuk mengelola data user
+// Class kelola data
 class User {
     private $conn;
     private $table = "users";
@@ -14,7 +14,7 @@ class User {
         $this->conn = $db;
     }
 
-    // Method untuk login
+    // Method  login
     public function login() {
         $query = "SELECT id, username, password, email, role 
                   FROM " . $this->table . " 
@@ -27,7 +27,7 @@ class User {
         return $stmt;
     }
 
-    // Method untuk register user baru
+    // Method  register  
     public function register() {
         $query = "INSERT INTO " . $this->table . " 
                   (username, password, email, role) 
@@ -35,7 +35,7 @@ class User {
         
         $stmt = $this->conn->prepare($query);
         
-        // Hash password
+        // Hashing
         $hashed_password = password_hash($this->password, PASSWORD_DEFAULT);
         
         $stmt->bindParam(":username", $this->username);
@@ -46,10 +46,10 @@ class User {
         return $stmt->execute();
     }
 
-    // Method untuk cek apakah username sudah ada
+    
     public function usernameExists() {
         $query = "SELECT id FROM " . $this->table . " WHERE username = :username";
-        $stmt = $this->conn->prepare($query);
+         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":username", $this->username);
         $stmt->execute();
         
